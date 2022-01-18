@@ -4,8 +4,8 @@
 	"description": "This is my explicitly backend for my own blog.",
 	"main": "server.js",
 	"scripts": {
-		"start": "node -r esm server.js",
-		"dev": "nodemon -r esm server.js"
+		"start": "node server.js",
+		"dev": "nodemon server.js"
 	},
 	"repository": {
 		"type": "git",
@@ -27,7 +27,6 @@
 		"cheerio": "^1.0.0-rc.10",
 		"cors": "^2.8.5",
 		"dotenv": "^14.2.0",
-		"esm": "^3.2.25",
 		"express": "^4.17.2",
 		"helmet": "^5.0.1",
 		"jsonwebtoken": "^8.5.1",

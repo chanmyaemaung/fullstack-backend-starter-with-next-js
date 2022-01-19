@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import { Container } from '@mui/material'
 import NoSsr from '@mui/material/NoSsr'
+import MyAppBar from '@components/MyAppBar'
 
 const MainLayout = ({ title, keywords, description, children }) => {
 	return (
@@ -17,7 +18,10 @@ const MainLayout = ({ title, keywords, description, children }) => {
 				<link rel='icon' href='/favicon.ico' />
 			</Head>
 			<NoSsr>
-				<Container maxWidth='md'>{children}</Container>
+				<Container component='main' maxWidth='xs'>
+					<MyAppBar />
+					{children}
+				</Container>
 			</NoSsr>
 		</NoSsr>
 	)

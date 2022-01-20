@@ -20,20 +20,24 @@ export default function Register() {
 
 	const [username, setUsername] = useState('chenlay')
 	const [email, setEmail] = useState('chenlay@gmail.com')
-	const [password, setPassword] = useState('123456')
+	const [password, setPassword] = useState('ewtfwegweg')
 
 	const handleSubmit = async (event) => {
 		event.preventDefault()
 
 		// console.table({ username, email, password })
 
-		const { data } = await axios.post(`${server}/api/register`, {
-			username,
-			email,
-			password,
-		})
+		try {
+			const { data } = await axios.post(`${server}/api/register`, {
+				username,
+				email,
+				password,
+			})
 
-		console.log('REGISTER RESPONSE', data)
+			console.log('REGISTER RESPONSE', data)
+		} catch (error) {
+			console.log(error.message)
+		}
 	}
 
 	const handleChange = (event) => {}

@@ -11,19 +11,32 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined'
 import Typography from '@mui/material/Typography'
 import MainLayout from '@components/MainLayout'
 import { useRouter } from 'next/router'
+import { useState } from 'react'
+import axios from 'axios'
+import { server } from '@config/index'
 
 export default function Register() {
 	const { push } = useRouter()
 
-	const handleSubmit = (event) => {
+	const [username, setUsername] = useState('chenlay')
+	const [email, setEmail] = useState('chenlay@gmail.com')
+	const [password, setPassword] = useState('123456')
+
+	const handleSubmit = async (event) => {
 		event.preventDefault()
-		const data = new FormData(event.currentTarget)
-		// eslint-disable-next-line no-console
-		console.log({
-			email: data.get('email'),
-			password: data.get('password'),
+
+		// console.table({ username, email, password })
+
+		const { data } = await axios.post(`${server}/api/register`, {
+			username,
+			email,
+			password,
 		})
+
+		console.log('REGISTER RESPONSE', data)
 	}
+
+	const handleChange = (event) => {}
 
 	return (
 		<MainLayout title='Account Registration'>
@@ -43,14 +56,16 @@ export default function Register() {
 				</Typography>
 				<Box component='form' onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
 					<TextField
-						margin='normal'
 						required
+						margin='normal'
 						fullWidth
 						id='username'
 						label='Username'
 						name='username'
 						autoComplete='username'
 						autoFocus
+						value={username}
+						onChange={handleChange}
 					/>
 					<TextField
 						margin='normal'
@@ -60,6 +75,8 @@ export default function Register() {
 						label='Email Address'
 						name='email'
 						autoComplete='email'
+						value={email}
+						onChange={handleChange}
 					/>
 					<TextField
 						margin='normal'
@@ -70,6 +87,8 @@ export default function Register() {
 						type='password'
 						id='password'
 						autoComplete='password'
+						value={password}
+						onChange={handleChange}
 					/>
 					<FormControlLabel
 						control={<Checkbox value='remember' color='primary' />}

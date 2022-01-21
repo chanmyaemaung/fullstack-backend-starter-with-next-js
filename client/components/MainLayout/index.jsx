@@ -30,7 +30,7 @@ const MainLayout = ({ title, keywords, description, children }) => {
 export default MainLayout
 
 MainLayout.defaultProps = {
-	title: 'Thai Lotto New',
+	title: 'My Blog',
 	keywords: 'my blog, chenlay blog, chan myae maung',
 	description:
 		'This is for my personal blog built with NEXT JS. Developed by PJK-DEV',
